@@ -18,6 +18,18 @@ Apache License or the GPL License is distributed on an "AS IS" BASIS, WITHOUT WA
 CONDITIONS OF ANY KIND, either express or implied. See the Apache License and the GPL License for
 the specific language governing permissions and limitations under the Apache License and the GPL License.
 */
+
+var jQuery, root = this;
+if (typeof define === "function" && define.amd) {
+    define('jquery', function ($) {
+        jQuery = $;
+    });
+} else if (typeof exports !== "undefined" && typeof require === "function") {
+    jQuery = require('jquery');
+} else {
+    jQuery = window.jQuery;
+}
+
 (function ($) {
     if(typeof $.fn.each2 == "undefined") {
         $.extend($.fn, {
@@ -42,7 +54,7 @@ the specific language governing permissions and limitations under the Apache Lic
     "use strict";
     /*global document, window, jQuery, console */
 
-    if (window.Select2 !== undefined) {
+    if (root.Select2 !== undefined) {
         return;
     }
 
@@ -3379,7 +3391,7 @@ the specific language governing permissions and limitations under the Apache Lic
                     if ("tags" in opts) {opts.multiple = multiple = true;}
                 }
 
-                select2 = multiple ? new window.Select2["class"].multi() : new window.Select2["class"].single();
+                select2 = multiple ? new Select2["class"].multi() : new Select2["class"].single();
                 select2.init(opts);
             } else if (typeof(args[0]) === "string") {
 
@@ -3513,7 +3525,7 @@ the specific language governing permissions and limitations under the Apache Lic
     };
 
     // exports
-    window.Select2 = {
+    var Select2 = root.Select2 = {
         query: {
             ajax: ajax,
             local: local,
