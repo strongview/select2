@@ -7,6 +7,9 @@
   "keywords": [
     "jquery"
   ],
+  "dependencies": {
+    "components/jquery": "*"
+  },
   "main": "select2.js",
   "styles": [
     "select2.css",
